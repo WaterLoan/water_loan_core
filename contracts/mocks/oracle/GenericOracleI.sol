@@ -3,7 +3,7 @@ pragma solidity ^0.5.0;
 interface GenericOracleI {
     // ganache
     event AssetPriceUpdated(address _asset, uint256 _price, uint256 timestamp);
-    event EthPriceUpdated(uint256 _price, uint256 timestamp);
+    event TrxPriceUpdated(uint256 _price, uint256 timestamp);
 
     // kovan
     event ProphecySubmitted(
@@ -14,6 +14,6 @@ interface GenericOracleI {
     );
 
     function getAssetPrice(address _asset) external view returns(uint256);
-    function getEthUsdPrice() external view returns(uint256);
+    function getTrxUsdPrice() external view returns(uint256);
 }
 

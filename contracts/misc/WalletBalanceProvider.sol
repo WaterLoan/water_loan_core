@@ -27,7 +27,7 @@ contract WalletBalanceProvider {
 
     }
     /**
-    @dev Fallback function, don't accept any ETH
+    @dev Fallback function, don't accept any TRX 
     **/
     function() external payable {
         revert("WalletBalanceProvider does not accept payments");
@@ -68,7 +68,7 @@ contract WalletBalanceProvider {
             if (reserves[j] != TrxAddressLib.trxAddress()) {
                 balances[j] = balanceOf(_user, reserves[j]);
             } else {
-                balances[j] = _user.balance; // ETH balance
+                balances[j] = _user.balance; // TRX balance
             }
         }
 

@@ -270,7 +270,7 @@ contract LendingPoolDataProvider is VersionedInitializable {
         uint256 requestedBorrowAmountTRX = oracle
             .getAssetPrice(_reserve)
             .mul(_amount.add(_fee))
-            .div(10 ** reserveDecimals); //price is in ether
+            .div(10 ** reserveDecimals); //price is in trx
 
         //add the current already borrowed amount to the amount requested to calculate the total collateral needed.
         uint256 collateralNeededInTRX = _userCurrentBorrowBalanceTH

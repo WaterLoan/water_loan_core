@@ -15,10 +15,10 @@ import "../libraries/TrxAddressLib.sol";
 /// @notice Receives tokens and manages the distribution amongst receivers
 ///  The usage is as follows:
 ///  - The distribution addresses and percentages are set up on construction
-///  - The Kyber Proxy is approved for a list of tokens in construction, which will be later burnt
+///  - The Swap Proxy is approved for a list of tokens in construction, which will be later burnt
 ///  - At any moment, anyone can call distribute() with a list of token addresses in order to distribute
 ///    the accumulated token amounts and/or TRX in this contract to all the receivers with percentages
-///  - If the address(0) is used as receiver, this contract will trade in Kyber to tokenToBurn (LEND)
+///  - If the address(0) is used as receiver, this contract will trade in JustSwap to tokenToBurn
 ///    and burn it (sending to address(0) the tokenToBurn)
 contract TokenDistributor is VersionedInitializable {
     using SafeMath for uint256;
@@ -52,7 +52,7 @@ contract TokenDistributor is VersionedInitializable {
     /// @notice Instead of using 100 for percentages, higher base to have more precision in the distribution
     uint256 public constant DISTRIBUTION_BASE = 10000;
 
-    /// @notice Kyber Proxy contract to trade tokens/TRX to tokenToBurn
+    /// @notice Swap Proxy contract to trade tokens/TRX to tokenToBurn
     IJustSwapInterface public swapProxy;
 
     /// @notice The address of the token to burn (LEND token)
@@ -76,7 +76,7 @@ contract TokenDistributor is VersionedInitializable {
         tokenToBurn = _tokenToBurn;
         swapProxy = IJustSwapInterface(_swapProxy);
         internalSetTokenDistribution(_receivers, _percentages);
-        approveKyber(_tokens);
+        approveSwap(_tokens);
         emit Setup(_tokenToBurn, _swapProxy, _recipientBurn);
     }
 
@@ -120,7 +120,7 @@ contract TokenDistributor is VersionedInitializable {
 
     /// @notice "Infinite" approval for all the tokens initialized
     /// @param _tokens List of IERC20 to approve
-    function approveKyber(IERC20[] memory _tokens) public {
+    function approveSwap(IERC20[] memory _tokens) public {
         for (uint256 i = 0; i < _tokens.length; i++) {
             if (address(_tokens[i]) != TrxAddressLib.trxAddress()) {
                 _tokens[i].safeApprove(address(swapProxy), MAX_UINT_MINUS_ONE);

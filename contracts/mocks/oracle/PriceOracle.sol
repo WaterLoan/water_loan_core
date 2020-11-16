@@ -6,10 +6,10 @@ import "../../interfaces/IPriceOracle.sol";
 contract PriceOracle is IPriceOracle {
 
     mapping(address => uint256) prices;
-    uint256 ethPriceUsd;
+    uint256 trxPriceUsd;
 
     event AssetPriceUpdated(address _asset, uint256 _price, uint256 timestamp);
-    event EthPriceUpdated(uint256 _price, uint256 timestamp);
+    event TrxPriceUpdated(uint256 _price, uint256 timestamp);
 
     function getAssetPrice(address _asset) external view returns(uint256) {
         return prices[_asset];
@@ -20,12 +20,12 @@ contract PriceOracle is IPriceOracle {
         emit AssetPriceUpdated(_asset, _price, block.timestamp);
     }
 
-    function getEthUsdPrice() external view returns(uint256) {
-        return ethPriceUsd;
+    function getTrxUsdPrice() external view returns(uint256) {
+        return trxPriceUsd;
     }
 
-    function setEthUsdPrice(uint256 _price) external {
-        ethPriceUsd = _price;
-        emit EthPriceUpdated(_price, block.timestamp);
+    function setTrxUsdPrice(uint256 _price) external {
+        trxPriceUsd = _price;
+        emit TrxPriceUpdated(_price, block.timestamp);
     }
 }
