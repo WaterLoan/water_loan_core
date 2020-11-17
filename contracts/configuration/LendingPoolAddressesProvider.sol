@@ -60,7 +60,7 @@ contract LendingPoolAddressesProvider is Ownable, ILendingPoolAddressesProvider,
     * @param _pool the new lending pool implementation
     **/
     function setLendingPoolImpl(address _pool) public onlyOwner {
-        updateImplInternal(LENDING_POOL, _pool);
+        _setAddress(LENDING_POOL, _pool);
         emit LendingPoolUpdated(_pool);
     }
 
@@ -78,7 +78,7 @@ contract LendingPoolAddressesProvider is Ownable, ILendingPoolAddressesProvider,
     * @param _lendingPoolCore the new lending pool core implementation
     **/
     function setLendingPoolCoreImpl(address _lendingPoolCore) public onlyOwner {
-        updateImplInternal(LENDING_POOL_CORE, _lendingPoolCore);
+        _setAddress(LENDING_POOL_CORE, _lendingPoolCore);
         emit LendingPoolCoreUpdated(_lendingPoolCore);
     }
 
@@ -95,7 +95,7 @@ contract LendingPoolAddressesProvider is Ownable, ILendingPoolAddressesProvider,
     * @param _configurator the new lending pool configurator implementation
     **/
     function setLendingPoolConfiguratorImpl(address _configurator) public onlyOwner {
-        updateImplInternal(LENDING_POOL_CONFIGURATOR, _configurator);
+        _setAddress(LENDING_POOL_CONFIGURATOR, _configurator);
         emit LendingPoolConfiguratorUpdated(_configurator);
     }
 
@@ -112,7 +112,7 @@ contract LendingPoolAddressesProvider is Ownable, ILendingPoolAddressesProvider,
     * @param _provider the new lending pool data provider implementation
     **/
     function setLendingPoolDataProviderImpl(address _provider) public onlyOwner {
-        updateImplInternal(DATA_PROVIDER, _provider);
+        _setAddress(DATA_PROVIDER, _provider);
         emit LendingPoolDataProviderUpdated(_provider);
     }
 
@@ -129,7 +129,7 @@ contract LendingPoolAddressesProvider is Ownable, ILendingPoolAddressesProvider,
     * @param _parametersProvider the new lending pool parameters provider implementation
     **/
     function setLendingPoolParametersProviderImpl(address _parametersProvider) public onlyOwner {
-        updateImplInternal(LENDING_POOL_PARAMETERS_PROVIDER, _parametersProvider);
+        _setAddress(LENDING_POOL_PARAMETERS_PROVIDER, _parametersProvider);
         emit LendingPoolParametersProviderUpdated(_parametersProvider);
     }
 
@@ -146,7 +146,7 @@ contract LendingPoolAddressesProvider is Ownable, ILendingPoolAddressesProvider,
     * @param _feeProvider the new lending pool fee provider implementation
     **/
     function setFeeProviderImpl(address _feeProvider) public onlyOwner {
-        updateImplInternal(FEE_PROVIDER, _feeProvider);
+        _setAddress(FEE_PROVIDER, _feeProvider);
         emit FeeProviderUpdated(_feeProvider);
     }
 

@@ -15,7 +15,7 @@ import "../libraries/openzeppelin-solidity/contracts/math/SafeMath.sol";
 * a new version of this contract will be deployed.
 * @author Aave
 **/
-contract DefaultReserveInterestRateStrategy is IReserveInterestRateStrategy {
+contract DefaultStrategy is IReserveInterestRateStrategy {
     using WadRayMath for uint256;
     using SafeMath for uint256;
 

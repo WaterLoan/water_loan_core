@@ -177,8 +177,8 @@ contract LendingPoolConfigurator is VersionedInitializable {
     ) external onlyLendingPoolManager {
         ERC20Detailed asset = ERC20Detailed(_reserve);
 
-        string memory aTokenName = string(abi.encodePacked("Aave Interest bearing ", asset.name()));
-        string memory aTokenSymbol = string(abi.encodePacked("a", asset.symbol()));
+        string memory aTokenName = string(abi.encodePacked("Water Interest bearing ", asset.name()));
+        string memory aTokenSymbol = string(abi.encodePacked("w", asset.symbol()));
 
         initReserveWithData(
             _reserve,
