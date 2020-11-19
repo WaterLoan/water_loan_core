@@ -1,9 +1,10 @@
 pragma solidity ^0.5.0;
 
 import "../../interfaces/IPriceOracle.sol";
+import "../../libraries/openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
-contract PriceOracle is IPriceOracle {
+contract PriceOracle is IPriceOracle, Ownable {
 
     mapping(address => uint256) prices;
     uint256 trxPriceUsd;

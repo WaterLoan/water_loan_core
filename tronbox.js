@@ -46,5 +46,6 @@ Then, run the migration with:
         version: '0.5.4'
       }
     }
+
   }
-}
+};
