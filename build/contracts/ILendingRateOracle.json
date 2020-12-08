@@ -1,0 +1,463 @@
+{
+  "contractName": "ILendingRateOracle",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_asset",
+          "type": "address"
+        }
+      ],
+      "name": "getMarketBorrowRate",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_asset",
+          "type": "address"
+        },
+        {
+          "name": "_rate",
+          "type": "uint256"
+        }
+      ],
+      "name": "setMarketBorrowRate",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.0;\n\n/**\n* @title ILendingRateOracle interface\n* @notice Interface for the Aave borrow rate oracle. Provides the average market borrow rate to be used as a base for the stable borrow rate calculations\n**/\n\ninterface ILendingRateOracle {\n    /**\n    @dev returns the market borrow rate in ray\n    **/\n    function getMarketBorrowRate(address _asset) external view returns (uint256);\n\n    /**\n    @dev sets the market borrow rate. Rate value must be in ray\n    **/\n    function setMarketBorrowRate(address _asset, uint256 _rate) external;\n}\n",
+  "sourcePath": "/Users/bibodeng/Programming/water_loan_core/contracts/interfaces/ILendingRateOracle.sol",
+  "ast": {
+    "absolutePath": "/Users/bibodeng/Programming/water_loan_core/contracts/interfaces/ILendingRateOracle.sol",
+    "exportedSymbols": {
+      "ILendingRateOracle": [
+        774
+      ]
+    },
+    "id": 775,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 759,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:6"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title ILendingRateOracle interface\n@notice Interface for the Aave borrow rate oracle. Provides the average market borrow rate to be used as a base for the stable borrow rate calculations*",
+        "fullyImplemented": false,
+        "id": 774,
+        "linearizedBaseContracts": [
+          774
+        ],
+        "name": "ILendingRateOracle",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@dev returns the market borrow rate in ray*",
+            "id": 766,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getMarketBorrowRate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 762,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 761,
+                  "name": "_asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 766,
+                  "src": "353:14:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 760,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "353:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "352:16:6"
+            },
+            "returnParameters": {
+              "id": 765,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 764,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 766,
+                  "src": "392:7:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 763,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "392:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "391:9:6"
+            },
+            "scope": 774,
+            "src": "324:77:6",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev sets the market borrow rate. Rate value must be in ray*",
+            "id": 773,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setMarketBorrowRate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 771,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 768,
+                  "name": "_asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 773,
+                  "src": "516:14:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 767,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "516:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 770,
+                  "name": "_rate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 773,
+                  "src": "532:13:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 769,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "532:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "515:31:6"
+            },
+            "returnParameters": {
+              "id": 772,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "555:0:6"
+            },
+            "scope": 774,
+            "src": "487:69:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 775,
+        "src": "226:332:6"
+      }
+    ],
+    "src": "0:559:6"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/bibodeng/Programming/water_loan_core/contracts/interfaces/ILendingRateOracle.sol",
+    "exportedSymbols": {
+      "ILendingRateOracle": [
+        774
+      ]
+    },
+    "id": 775,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 759,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:6"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title ILendingRateOracle interface\n@notice Interface for the Aave borrow rate oracle. Provides the average market borrow rate to be used as a base for the stable borrow rate calculations*",
+        "fullyImplemented": false,
+        "id": 774,
+        "linearizedBaseContracts": [
+          774
+        ],
+        "name": "ILendingRateOracle",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@dev returns the market borrow rate in ray*",
+            "id": 766,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getMarketBorrowRate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 762,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 761,
+                  "name": "_asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 766,
+                  "src": "353:14:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 760,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "353:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "352:16:6"
+            },
+            "returnParameters": {
+              "id": 765,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 764,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 766,
+                  "src": "392:7:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 763,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "392:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "391:9:6"
+            },
+            "scope": 774,
+            "src": "324:77:6",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev sets the market borrow rate. Rate value must be in ray*",
+            "id": 773,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setMarketBorrowRate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 771,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 768,
+                  "name": "_asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 773,
+                  "src": "516:14:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 767,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "516:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 770,
+                  "name": "_rate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 773,
+                  "src": "532:13:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 769,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "532:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "515:31:6"
+            },
+            "returnParameters": {
+              "id": 772,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "555:0:6"
+            },
+            "scope": 774,
+            "src": "487:69:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 775,
+        "src": "226:332:6"
+      }
+    ],
+    "src": "0:559:6"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.4+commit.d15a3125.mod.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2020-12-06T14:51:53.212Z"
+}

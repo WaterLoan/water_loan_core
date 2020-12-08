@@ -1,0 +1,1701 @@
+{
+  "contractName": "LendingPoolParametersProvider",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_addressesProvider",
+          "type": "address"
+        }
+      ],
+      "name": "initialize",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getMaxStableRateBorrowSizePercent",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getRebalanceDownRateDelta",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getFlashLoanFeesInBips",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x60806040526000805534801561001457600080fd5b50d3801561002157600080fd5b50d2801561002e57600080fd5b506102bf8061003e6000396000f3fe608060405234801561001057600080fd5b50d3801561001d57600080fd5b50d2801561002a57600080fd5b5060043610610083576000357c01000000000000000000000000000000000000000000000000000000009004806346f4f8d114610088578063586feb40146100a6578063c4d66de8146100cb578063d6b725ac1461010f575b600080fd5b61009061012d565b6040518082815260200191505060405180910390f35b6100ae610140565b604051808381526020018281526020019250505060405180910390f35b61010d600480360360208110156100e157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610150565b005b610117610242565b6040518082815260200191505060405180910390f35b60006aa56fa5b99019a5c8000000905090565b6000806023610bb8915091509091565b600061015a61024b565b9050600160009054906101000a900460ff168061017b575061017a610254565b5b80610187575060005481115b15156101de576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602e815260200180610266602e913960400191505060405180910390fd5b6000600160009054906101000a900460ff16159050801561021b5760018060006101000a81548160ff021916908315150217905550816000819055505b801561023d576000600160006101000a81548160ff0219169083151502179055505b505050565b60006019905090565b60006001905090565b600080303b9050600081149150509056fe436f6e747261637420696e7374616e63652068617320616c7265616479206265656e20696e697469616c697a6564a165627a7a72305820712a86350b4df58fe10e53d600a8fc68f7f2c53ca4584e073aeb03bb5f568d4c0029",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50d3801561001d57600080fd5b50d2801561002a57600080fd5b5060043610610083576000357c01000000000000000000000000000000000000000000000000000000009004806346f4f8d114610088578063586feb40146100a6578063c4d66de8146100cb578063d6b725ac1461010f575b600080fd5b61009061012d565b6040518082815260200191505060405180910390f35b6100ae610140565b604051808381526020018281526020019250505060405180910390f35b61010d600480360360208110156100e157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610150565b005b610117610242565b6040518082815260200191505060405180910390f35b60006aa56fa5b99019a5c8000000905090565b6000806023610bb8915091509091565b600061015a61024b565b9050600160009054906101000a900460ff168061017b575061017a610254565b5b80610187575060005481115b15156101de576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602e815260200180610266602e913960400191505060405180910390fd5b6000600160009054906101000a900460ff16159050801561021b5760018060006101000a81548160ff021916908315150217905550816000819055505b801561023d576000600160006101000a81548160ff0219169083151502179055505b505050565b60006019905090565b60006001905090565b600080303b9050600081149150509056fe436f6e747261637420696e7374616e63652068617320616c7265616479206265656e20696e697469616c697a6564a165627a7a72305820712a86350b4df58fe10e53d600a8fc68f7f2c53ca4584e073aeb03bb5f568d4c0029",
+  "sourceMap": "271:1595:2:-;;;891:1:32;849:43;;271:1595:2;8:9:-1;5:2;;;30:1;27;20:12;5:2;271:1595:2;;8:9:-1;5:2;;;30:1;27;20:12;5:2;271:1595:2;;8:9:-1;5:2;;;30:1;27;20:12;5:2;271:1595:2;;;;;;;",
+  "deployedSourceMap": "271:1595:2:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;271:1595:2;;8:9:-1;5:2;;;30:1;27;20:12;5:2;271:1595:2;;8:9:-1;5:2;;;30:1;27;20:12;5:2;271:1595:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1468:118;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1720:144;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;945:74;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;945:74:2;;;;;;;;;;;;;;;;;;;:::i;:::-;;1138:137;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1468:118;1528:7;467:8;1547:32;;1468:118;:::o;1720:144::-;1777:7;1786;528:2;586:4;1805:52;;;;1720:144;;:::o;945:74::-;1139:16:32;1158:13;:11;:13::i;:::-;1139:32;;1189:12;;;;;;;;;;;:31;;;;1205:15;:13;:15::i;:::-;1189:31;:69;;;;1235:23;;1224:8;:34;1189:69;1181:128;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1320:19;1343:12;;;;;;;;;;;1342:13;1320:35;;1369:14;1365:112;;;1414:4;1399:12;;:19;;;;;;;;;;;;;;;;;;1458:8;1432:23;:34;;;;1365:112;1503:14;1499:65;;;1548:5;1533:12;;:20;;;;;;;;;;;;;;;;;;1499:65;945:74:2;;;:::o;1138:137::-;1206:7;406:2;1226:42;;1138:137;:::o;657:100::-;702:7;647:3;721:29;;657:100;:::o;1845:556:32:-;1892:4;2257:10;2353:7;2341:20;2335:26;;2393:1;2387:2;:7;2380:14;;;1845:556;:::o",
+  "source": "pragma solidity ^0.5.0;\n\n\nimport \"../libraries/openzeppelin-upgradeability/VersionedInitializable.sol\";\nimport \"./UintStorage.sol\";\n\n/**\n* @title LendingPoolParametersProvider\n* @author Aave\n* @notice stores the configuration parameters of the Lending Pool contract\n**/\n\ncontract LendingPoolParametersProvider is VersionedInitializable {\n\n    uint256 private constant MAX_STABLE_RATE_BORROW_SIZE_PERCENT = 25;\n    uint256 private constant REBALANCE_DOWN_RATE_DELTA = (1e27)/5;\n    uint256 private constant FLASHLOAN_FEE_TOTAL = 35;\n    uint256 private constant FLASHLOAN_FEE_PROTOCOL = 3000;\n\n    uint256 constant private DATA_PROVIDER_REVISION = 0x1;\n\n    function getRevision() internal pure returns(uint256) {\n        return DATA_PROVIDER_REVISION;\n    }\n\n    /**\n    * @dev initializes the LendingPoolParametersProvider after it's added to the proxy\n    * @param _addressesProvider the address of the LendingPoolAddressesProvider\n    */\n    function initialize(address _addressesProvider) public initializer {\n    }\n    /**\n    * @dev returns the maximum stable rate borrow size, in percentage of the available liquidity.\n    **/\n    function getMaxStableRateBorrowSizePercent() external pure returns (uint256)  {\n        return MAX_STABLE_RATE_BORROW_SIZE_PERCENT;\n    }\n\n    /**\n    * @dev returns the delta between the current stable rate and the user stable rate at\n    *      which the borrow position of the user will be rebalanced (scaled down)\n    **/\n    function getRebalanceDownRateDelta() external pure returns (uint256) {\n        return REBALANCE_DOWN_RATE_DELTA;\n    }\n\n    /**\n    * @dev returns the fee applied to a flashloan and the portion to redirect to the protocol, in basis points.\n    **/\n    function getFlashLoanFeesInBips() external pure returns (uint256, uint256) {\n        return (FLASHLOAN_FEE_TOTAL, FLASHLOAN_FEE_PROTOCOL);\n    }\n}\n",
+  "sourcePath": "/Users/bibodeng/Programming/water_loan_core/contracts/configuration/LendingPoolParametersProvider.sol",
+  "ast": {
+    "absolutePath": "/Users/bibodeng/Programming/water_loan_core/contracts/configuration/LendingPoolParametersProvider.sol",
+    "exportedSymbols": {
+      "LendingPoolParametersProvider": [
+        594
+      ]
+    },
+    "id": 595,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 527,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:2"
+      },
+      {
+        "absolutePath": "/Users/bibodeng/Programming/water_loan_core/contracts/libraries/openzeppelin-upgradeability/VersionedInitializable.sol",
+        "file": "../libraries/openzeppelin-upgradeability/VersionedInitializable.sol",
+        "id": 528,
+        "nodeType": "ImportDirective",
+        "scope": 595,
+        "sourceUnit": 10283,
+        "src": "26:77:2",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/bibodeng/Programming/water_loan_core/contracts/configuration/UintStorage.sol",
+        "file": "./UintStorage.sol",
+        "id": 529,
+        "nodeType": "ImportDirective",
+        "scope": 595,
+        "sourceUnit": 628,
+        "src": "104:27:2",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 530,
+              "name": "VersionedInitializable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 10282,
+              "src": "313:22:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_VersionedInitializable_$10282",
+                "typeString": "contract VersionedInitializable"
+              }
+            },
+            "id": 531,
+            "nodeType": "InheritanceSpecifier",
+            "src": "313:22:2"
+          }
+        ],
+        "contractDependencies": [
+          10282
+        ],
+        "contractKind": "contract",
+        "documentation": "@title LendingPoolParametersProvider\n@author Aave\n@notice stores the configuration parameters of the Lending Pool contract*",
+        "fullyImplemented": true,
+        "id": 594,
+        "linearizedBaseContracts": [
+          594,
+          10282
+        ],
+        "name": "LendingPoolParametersProvider",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 534,
+            "name": "MAX_STABLE_RATE_BORROW_SIZE_PERCENT",
+            "nodeType": "VariableDeclaration",
+            "scope": 594,
+            "src": "343:65:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 532,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "343:7:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3235",
+              "id": 533,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "406:2:2",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_25_by_1",
+                "typeString": "int_const 25"
+              },
+              "value": "25"
+            },
+            "visibility": "private"
+          },
+          {
+            "constant": true,
+            "id": 540,
+            "name": "REBALANCE_DOWN_RATE_DELTA",
+            "nodeType": "VariableDeclaration",
+            "scope": 594,
+            "src": "414:61:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 535,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "414:7:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "commonType": {
+                "typeIdentifier": "t_rational_200000000000000000000000000_by_1",
+                "typeString": "int_const 200000000000000000000000000"
+              },
+              "id": 539,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "lValueRequested": false,
+              "leftExpression": {
+                "argumentTypes": null,
+                "components": [
+                  {
+                    "argumentTypes": null,
+                    "hexValue": "31653237",
+                    "id": 536,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "number",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "468:4:2",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_rational_1000000000000000000000000000_by_1",
+                      "typeString": "int_const 1000000000000000000000000000"
+                    },
+                    "value": "1e27"
+                  }
+                ],
+                "id": 537,
+                "isConstant": false,
+                "isInlineArray": false,
+                "isLValue": false,
+                "isPure": true,
+                "lValueRequested": false,
+                "nodeType": "TupleExpression",
+                "src": "467:6:2",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_rational_1000000000000000000000000000_by_1",
+                  "typeString": "int_const 1000000000000000000000000000"
+                }
+              },
+              "nodeType": "BinaryOperation",
+              "operator": "/",
+              "rightExpression": {
+                "argumentTypes": null,
+                "hexValue": "35",
+                "id": 538,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "kind": "number",
+                "lValueRequested": false,
+                "nodeType": "Literal",
+                "src": "474:1:2",
+                "subdenomination": null,
+                "typeDescriptions": {
+                  "typeIdentifier": "t_rational_5_by_1",
+                  "typeString": "int_const 5"
+                },
+                "value": "5"
+              },
+              "src": "467:8:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_200000000000000000000000000_by_1",
+                "typeString": "int_const 200000000000000000000000000"
+              }
+            },
+            "visibility": "private"
+          },
+          {
+            "constant": true,
+            "id": 543,
+            "name": "FLASHLOAN_FEE_TOTAL",
+            "nodeType": "VariableDeclaration",
+            "scope": 594,
+            "src": "481:49:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 541,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "481:7:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3335",
+              "id": 542,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "528:2:2",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_35_by_1",
+                "typeString": "int_const 35"
+              },
+              "value": "35"
+            },
+            "visibility": "private"
+          },
+          {
+            "constant": true,
+            "id": 546,
+            "name": "FLASHLOAN_FEE_PROTOCOL",
+            "nodeType": "VariableDeclaration",
+            "scope": 594,
+            "src": "536:54:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 544,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "536:7:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "33303030",
+              "id": 545,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "586:4:2",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_3000_by_1",
+                "typeString": "int_const 3000"
+              },
+              "value": "3000"
+            },
+            "visibility": "private"
+          },
+          {
+            "constant": true,
+            "id": 549,
+            "name": "DATA_PROVIDER_REVISION",
+            "nodeType": "VariableDeclaration",
+            "scope": 594,
+            "src": "597:53:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 547,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "597:7:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "307831",
+              "id": 548,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "647:3:2",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_1_by_1",
+                "typeString": "int_const 1"
+              },
+              "value": "0x1"
+            },
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 556,
+              "nodeType": "Block",
+              "src": "711:46:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 554,
+                    "name": "DATA_PROVIDER_REVISION",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 549,
+                    "src": "728:22:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 553,
+                  "id": 555,
+                  "nodeType": "Return",
+                  "src": "721:29:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 557,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getRevision",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 550,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "677:2:2"
+            },
+            "returnParameters": {
+              "id": 553,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 552,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 557,
+                  "src": "702:7:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 551,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "702:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "701:9:2"
+            },
+            "scope": 594,
+            "src": "657:100:2",
+            "stateMutability": "pure",
+            "superFunction": 10263,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 564,
+              "nodeType": "Block",
+              "src": "1012:7:2",
+              "statements": []
+            },
+            "documentation": "@dev initializes the LendingPoolParametersProvider after it's added to the proxy\n@param _addressesProvider the address of the LendingPoolAddressesProvider",
+            "id": 565,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 562,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 561,
+                  "name": "initializer",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 10258,
+                  "src": "1000:11:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1000:11:2"
+              }
+            ],
+            "name": "initialize",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 560,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 559,
+                  "name": "_addressesProvider",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 565,
+                  "src": "965:26:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 558,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "965:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "964:28:2"
+            },
+            "returnParameters": {
+              "id": 563,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1012:0:2"
+            },
+            "scope": 594,
+            "src": "945:74:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 572,
+              "nodeType": "Block",
+              "src": "1216:59:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 570,
+                    "name": "MAX_STABLE_RATE_BORROW_SIZE_PERCENT",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 534,
+                    "src": "1233:35:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 569,
+                  "id": 571,
+                  "nodeType": "Return",
+                  "src": "1226:42:2"
+                }
+              ]
+            },
+            "documentation": "@dev returns the maximum stable rate borrow size, in percentage of the available liquidity.*",
+            "id": 573,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getMaxStableRateBorrowSizePercent",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 566,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1180:2:2"
+            },
+            "returnParameters": {
+              "id": 569,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 568,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 573,
+                  "src": "1206:7:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 567,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1206:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1205:9:2"
+            },
+            "scope": 594,
+            "src": "1138:137:2",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 580,
+              "nodeType": "Block",
+              "src": "1537:49:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 578,
+                    "name": "REBALANCE_DOWN_RATE_DELTA",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 540,
+                    "src": "1554:25:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 577,
+                  "id": 579,
+                  "nodeType": "Return",
+                  "src": "1547:32:2"
+                }
+              ]
+            },
+            "documentation": "@dev returns the delta between the current stable rate and the user stable rate at\n     which the borrow position of the user will be rebalanced (scaled down)*",
+            "id": 581,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getRebalanceDownRateDelta",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 574,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1502:2:2"
+            },
+            "returnParameters": {
+              "id": 577,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 576,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 581,
+                  "src": "1528:7:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 575,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1528:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1527:9:2"
+            },
+            "scope": 594,
+            "src": "1468:118:2",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 592,
+              "nodeType": "Block",
+              "src": "1795:69:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "id": 588,
+                        "name": "FLASHLOAN_FEE_TOTAL",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 543,
+                        "src": "1813:19:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 589,
+                        "name": "FLASHLOAN_FEE_PROTOCOL",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 546,
+                        "src": "1834:22:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "id": 590,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "1812:45:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_uint256_$_t_uint256_$",
+                      "typeString": "tuple(uint256,uint256)"
+                    }
+                  },
+                  "functionReturnParameters": 587,
+                  "id": 591,
+                  "nodeType": "Return",
+                  "src": "1805:52:2"
+                }
+              ]
+            },
+            "documentation": "@dev returns the fee applied to a flashloan and the portion to redirect to the protocol, in basis points.*",
+            "id": 593,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getFlashLoanFeesInBips",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 582,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1751:2:2"
+            },
+            "returnParameters": {
+              "id": 587,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 584,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 593,
+                  "src": "1777:7:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 583,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1777:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 586,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 593,
+                  "src": "1786:7:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 585,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1786:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1776:18:2"
+            },
+            "scope": 594,
+            "src": "1720:144:2",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 595,
+        "src": "271:1595:2"
+      }
+    ],
+    "src": "0:1867:2"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/bibodeng/Programming/water_loan_core/contracts/configuration/LendingPoolParametersProvider.sol",
+    "exportedSymbols": {
+      "LendingPoolParametersProvider": [
+        594
+      ]
+    },
+    "id": 595,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 527,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:2"
+      },
+      {
+        "absolutePath": "/Users/bibodeng/Programming/water_loan_core/contracts/libraries/openzeppelin-upgradeability/VersionedInitializable.sol",
+        "file": "../libraries/openzeppelin-upgradeability/VersionedInitializable.sol",
+        "id": 528,
+        "nodeType": "ImportDirective",
+        "scope": 595,
+        "sourceUnit": 10283,
+        "src": "26:77:2",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/bibodeng/Programming/water_loan_core/contracts/configuration/UintStorage.sol",
+        "file": "./UintStorage.sol",
+        "id": 529,
+        "nodeType": "ImportDirective",
+        "scope": 595,
+        "sourceUnit": 628,
+        "src": "104:27:2",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 530,
+              "name": "VersionedInitializable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 10282,
+              "src": "313:22:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_VersionedInitializable_$10282",
+                "typeString": "contract VersionedInitializable"
+              }
+            },
+            "id": 531,
+            "nodeType": "InheritanceSpecifier",
+            "src": "313:22:2"
+          }
+        ],
+        "contractDependencies": [
+          10282
+        ],
+        "contractKind": "contract",
+        "documentation": "@title LendingPoolParametersProvider\n@author Aave\n@notice stores the configuration parameters of the Lending Pool contract*",
+        "fullyImplemented": true,
+        "id": 594,
+        "linearizedBaseContracts": [
+          594,
+          10282
+        ],
+        "name": "LendingPoolParametersProvider",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 534,
+            "name": "MAX_STABLE_RATE_BORROW_SIZE_PERCENT",
+            "nodeType": "VariableDeclaration",
+            "scope": 594,
+            "src": "343:65:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 532,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "343:7:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3235",
+              "id": 533,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "406:2:2",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_25_by_1",
+                "typeString": "int_const 25"
+              },
+              "value": "25"
+            },
+            "visibility": "private"
+          },
+          {
+            "constant": true,
+            "id": 540,
+            "name": "REBALANCE_DOWN_RATE_DELTA",
+            "nodeType": "VariableDeclaration",
+            "scope": 594,
+            "src": "414:61:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 535,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "414:7:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "commonType": {
+                "typeIdentifier": "t_rational_200000000000000000000000000_by_1",
+                "typeString": "int_const 200000000000000000000000000"
+              },
+              "id": 539,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "lValueRequested": false,
+              "leftExpression": {
+                "argumentTypes": null,
+                "components": [
+                  {
+                    "argumentTypes": null,
+                    "hexValue": "31653237",
+                    "id": 536,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "number",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "468:4:2",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_rational_1000000000000000000000000000_by_1",
+                      "typeString": "int_const 1000000000000000000000000000"
+                    },
+                    "value": "1e27"
+                  }
+                ],
+                "id": 537,
+                "isConstant": false,
+                "isInlineArray": false,
+                "isLValue": false,
+                "isPure": true,
+                "lValueRequested": false,
+                "nodeType": "TupleExpression",
+                "src": "467:6:2",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_rational_1000000000000000000000000000_by_1",
+                  "typeString": "int_const 1000000000000000000000000000"
+                }
+              },
+              "nodeType": "BinaryOperation",
+              "operator": "/",
+              "rightExpression": {
+                "argumentTypes": null,
+                "hexValue": "35",
+                "id": 538,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "kind": "number",
+                "lValueRequested": false,
+                "nodeType": "Literal",
+                "src": "474:1:2",
+                "subdenomination": null,
+                "typeDescriptions": {
+                  "typeIdentifier": "t_rational_5_by_1",
+                  "typeString": "int_const 5"
+                },
+                "value": "5"
+              },
+              "src": "467:8:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_200000000000000000000000000_by_1",
+                "typeString": "int_const 200000000000000000000000000"
+              }
+            },
+            "visibility": "private"
+          },
+          {
+            "constant": true,
+            "id": 543,
+            "name": "FLASHLOAN_FEE_TOTAL",
+            "nodeType": "VariableDeclaration",
+            "scope": 594,
+            "src": "481:49:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 541,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "481:7:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3335",
+              "id": 542,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "528:2:2",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_35_by_1",
+                "typeString": "int_const 35"
+              },
+              "value": "35"
+            },
+            "visibility": "private"
+          },
+          {
+            "constant": true,
+            "id": 546,
+            "name": "FLASHLOAN_FEE_PROTOCOL",
+            "nodeType": "VariableDeclaration",
+            "scope": 594,
+            "src": "536:54:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 544,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "536:7:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "33303030",
+              "id": 545,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "586:4:2",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_3000_by_1",
+                "typeString": "int_const 3000"
+              },
+              "value": "3000"
+            },
+            "visibility": "private"
+          },
+          {
+            "constant": true,
+            "id": 549,
+            "name": "DATA_PROVIDER_REVISION",
+            "nodeType": "VariableDeclaration",
+            "scope": 594,
+            "src": "597:53:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 547,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "597:7:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "307831",
+              "id": 548,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "647:3:2",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_1_by_1",
+                "typeString": "int_const 1"
+              },
+              "value": "0x1"
+            },
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 556,
+              "nodeType": "Block",
+              "src": "711:46:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 554,
+                    "name": "DATA_PROVIDER_REVISION",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 549,
+                    "src": "728:22:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 553,
+                  "id": 555,
+                  "nodeType": "Return",
+                  "src": "721:29:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 557,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getRevision",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 550,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "677:2:2"
+            },
+            "returnParameters": {
+              "id": 553,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 552,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 557,
+                  "src": "702:7:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 551,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "702:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "701:9:2"
+            },
+            "scope": 594,
+            "src": "657:100:2",
+            "stateMutability": "pure",
+            "superFunction": 10263,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 564,
+              "nodeType": "Block",
+              "src": "1012:7:2",
+              "statements": []
+            },
+            "documentation": "@dev initializes the LendingPoolParametersProvider after it's added to the proxy\n@param _addressesProvider the address of the LendingPoolAddressesProvider",
+            "id": 565,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 562,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 561,
+                  "name": "initializer",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 10258,
+                  "src": "1000:11:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1000:11:2"
+              }
+            ],
+            "name": "initialize",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 560,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 559,
+                  "name": "_addressesProvider",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 565,
+                  "src": "965:26:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 558,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "965:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "964:28:2"
+            },
+            "returnParameters": {
+              "id": 563,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1012:0:2"
+            },
+            "scope": 594,
+            "src": "945:74:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 572,
+              "nodeType": "Block",
+              "src": "1216:59:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 570,
+                    "name": "MAX_STABLE_RATE_BORROW_SIZE_PERCENT",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 534,
+                    "src": "1233:35:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 569,
+                  "id": 571,
+                  "nodeType": "Return",
+                  "src": "1226:42:2"
+                }
+              ]
+            },
+            "documentation": "@dev returns the maximum stable rate borrow size, in percentage of the available liquidity.*",
+            "id": 573,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getMaxStableRateBorrowSizePercent",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 566,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1180:2:2"
+            },
+            "returnParameters": {
+              "id": 569,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 568,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 573,
+                  "src": "1206:7:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 567,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1206:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1205:9:2"
+            },
+            "scope": 594,
+            "src": "1138:137:2",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 580,
+              "nodeType": "Block",
+              "src": "1537:49:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 578,
+                    "name": "REBALANCE_DOWN_RATE_DELTA",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 540,
+                    "src": "1554:25:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 577,
+                  "id": 579,
+                  "nodeType": "Return",
+                  "src": "1547:32:2"
+                }
+              ]
+            },
+            "documentation": "@dev returns the delta between the current stable rate and the user stable rate at\n     which the borrow position of the user will be rebalanced (scaled down)*",
+            "id": 581,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getRebalanceDownRateDelta",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 574,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1502:2:2"
+            },
+            "returnParameters": {
+              "id": 577,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 576,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 581,
+                  "src": "1528:7:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 575,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1528:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1527:9:2"
+            },
+            "scope": 594,
+            "src": "1468:118:2",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 592,
+              "nodeType": "Block",
+              "src": "1795:69:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "id": 588,
+                        "name": "FLASHLOAN_FEE_TOTAL",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 543,
+                        "src": "1813:19:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 589,
+                        "name": "FLASHLOAN_FEE_PROTOCOL",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 546,
+                        "src": "1834:22:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "id": 590,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "1812:45:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_uint256_$_t_uint256_$",
+                      "typeString": "tuple(uint256,uint256)"
+                    }
+                  },
+                  "functionReturnParameters": 587,
+                  "id": 591,
+                  "nodeType": "Return",
+                  "src": "1805:52:2"
+                }
+              ]
+            },
+            "documentation": "@dev returns the fee applied to a flashloan and the portion to redirect to the protocol, in basis points.*",
+            "id": 593,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getFlashLoanFeesInBips",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 582,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1751:2:2"
+            },
+            "returnParameters": {
+              "id": 587,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 584,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 593,
+                  "src": "1777:7:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 583,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1777:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 586,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 593,
+                  "src": "1786:7:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 585,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1786:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1776:18:2"
+            },
+            "scope": 594,
+            "src": "1720:144:2",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 595,
+        "src": "271:1595:2"
+      }
+    ],
+    "src": "0:1867:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.4+commit.d15a3125.mod.Emscripten.clang"
+  },
+  "networks": {
+    "3": {
+      "events": {},
+      "links": {},
+      "address": "418a372bbd3af47e243c6def34180e1971730d596e"
+    },
+    "9": {
+      "events": {},
+      "links": {},
+      "address": "41b6e2884f9ba673cf38e5142ea3b1f85e2d18ce31"
+    }
+  },
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2020-12-06T14:57:27.649Z"
+}

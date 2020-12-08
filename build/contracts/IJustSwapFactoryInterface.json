@@ -1,0 +1,2921 @@
+{
+  "contractName": "IJustSwapFactoryInterface",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "token",
+          "type": "address"
+        }
+      ],
+      "name": "getExchange",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.0;\n\nimport \"../libraries/openzeppelin-solidity/contracts/ownership/Ownable.sol\";\n\ninterface IJustSwapProxyInterface {\n    function tokenToTrxSwapInput(uint256 tokens_sold, uint256 min_trx, uint256 deadline) external returns (uint256);\n    function trxToTokenTransferInput(uint256 min_tokens, uint256 deadline, address recipient) external payable returns(uint256);\n}\n\ninterface IJustSwapFactoryInterface {\n    function getExchange(address token) external view returns (address payable);\n}\n\ncontract IJustSwapInterface is Ownable {\n    IJustSwapFactoryInterface public factory;\n\n    function setFactory(address _factory) external onlyOwner returns (bool) {\n        factory = IJustSwapFactoryInterface(_factory);\n    }\n\n    /***********\n    @dev returns the DBT\n     */\n    function tradeWithHint(address _asset, uint _amount, address _tokenToBurn, address _destAddress) external payable returns(uint256) {\n        IJustSwapProxyInterface assetFactory = IJustSwapProxyInterface(factory.getExchange(_asset));\n        uint256 trxcount = assetFactory.tokenToTrxSwapInput(_amount, 1, 10);\n        IJustSwapProxyInterface tokenToBurnFactory = IJustSwapProxyInterface(factory.getExchange(_tokenToBurn));\n        return tokenToBurnFactory.trxToTokenTransferInput.value(trxcount)(1, 10, _destAddress);\n    }\n}\n",
+  "sourcePath": "/Users/bibodeng/Programming/water_loan_core/contracts/interfaces/IJustSwapInterface.sol",
+  "ast": {
+    "absolutePath": "/Users/bibodeng/Programming/water_loan_core/contracts/interfaces/IJustSwapInterface.sol",
+    "exportedSymbols": {
+      "IJustSwapFactoryInterface": [
+        1300
+      ],
+      "IJustSwapInterface": [
+        1372
+      ],
+      "IJustSwapProxyInterface": [
+        1292
+      ]
+    },
+    "id": 1373,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1268,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:8"
+      },
+      {
+        "absolutePath": "/Users/bibodeng/Programming/water_loan_core/contracts/libraries/openzeppelin-solidity/contracts/ownership/Ownable.sol",
+        "file": "../libraries/openzeppelin-solidity/contracts/ownership/Ownable.sol",
+        "id": 1269,
+        "nodeType": "ImportDirective",
+        "scope": 1373,
+        "sourceUnit": 15373,
+        "src": "25:76:8",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 1292,
+        "linearizedBaseContracts": [
+          1292
+        ],
+        "name": "IJustSwapProxyInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 1280,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "tokenToTrxSwapInput",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1276,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1271,
+                  "name": "tokens_sold",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1280,
+                  "src": "172:19:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1270,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "172:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1273,
+                  "name": "min_trx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1280,
+                  "src": "193:15:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1272,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "193:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1275,
+                  "name": "deadline",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1280,
+                  "src": "210:16:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1274,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "210:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "171:56:8"
+            },
+            "returnParameters": {
+              "id": 1279,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1278,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1280,
+                  "src": "246:7:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1277,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "246:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "245:9:8"
+            },
+            "scope": 1292,
+            "src": "143:112:8",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 1291,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "trxToTokenTransferInput",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1287,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1282,
+                  "name": "min_tokens",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1291,
+                  "src": "293:18:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1281,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "293:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1284,
+                  "name": "deadline",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1291,
+                  "src": "313:16:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1283,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "313:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1286,
+                  "name": "recipient",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1291,
+                  "src": "331:17:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1285,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "331:7:8",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "292:57:8"
+            },
+            "returnParameters": {
+              "id": 1290,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1289,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1291,
+                  "src": "375:7:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1288,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "375:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "374:9:8"
+            },
+            "scope": 1292,
+            "src": "260:124:8",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1373,
+        "src": "103:283:8"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 1300,
+        "linearizedBaseContracts": [
+          1300
+        ],
+        "name": "IJustSwapFactoryInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 1299,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getExchange",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1295,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1294,
+                  "name": "token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1299,
+                  "src": "451:13:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1293,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "451:7:8",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "450:15:8"
+            },
+            "returnParameters": {
+              "id": 1298,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1297,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1299,
+                  "src": "489:15:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  },
+                  "typeName": {
+                    "id": 1296,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "489:15:8",
+                    "stateMutability": "payable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "488:17:8"
+            },
+            "scope": 1300,
+            "src": "430:76:8",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1373,
+        "src": "388:120:8"
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 1301,
+              "name": "Ownable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 15372,
+              "src": "541:7:8",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Ownable_$15372",
+                "typeString": "contract Ownable"
+              }
+            },
+            "id": 1302,
+            "nodeType": "InheritanceSpecifier",
+            "src": "541:7:8"
+          }
+        ],
+        "contractDependencies": [
+          10117,
+          15372
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1372,
+        "linearizedBaseContracts": [
+          1372,
+          15372,
+          10117
+        ],
+        "name": "IJustSwapInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 1304,
+            "name": "factory",
+            "nodeType": "VariableDeclaration",
+            "scope": 1372,
+            "src": "555:40:8",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IJustSwapFactoryInterface_$1300",
+              "typeString": "contract IJustSwapFactoryInterface"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 1303,
+              "name": "IJustSwapFactoryInterface",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1300,
+              "src": "555:25:8",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IJustSwapFactoryInterface_$1300",
+                "typeString": "contract IJustSwapFactoryInterface"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1319,
+              "nodeType": "Block",
+              "src": "674:62:8",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1317,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 1313,
+                      "name": "factory",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1304,
+                      "src": "684:7:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IJustSwapFactoryInterface_$1300",
+                        "typeString": "contract IJustSwapFactoryInterface"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 1315,
+                          "name": "_factory",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1306,
+                          "src": "720:8:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 1314,
+                        "name": "IJustSwapFactoryInterface",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1300,
+                        "src": "694:25:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_IJustSwapFactoryInterface_$1300_$",
+                          "typeString": "type(contract IJustSwapFactoryInterface)"
+                        }
+                      },
+                      "id": 1316,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "694:35:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IJustSwapFactoryInterface_$1300",
+                        "typeString": "contract IJustSwapFactoryInterface"
+                      }
+                    },
+                    "src": "684:45:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IJustSwapFactoryInterface_$1300",
+                      "typeString": "contract IJustSwapFactoryInterface"
+                    }
+                  },
+                  "id": 1318,
+                  "nodeType": "ExpressionStatement",
+                  "src": "684:45:8"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1320,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 1309,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 1308,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 15305,
+                  "src": "649:9:8",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "649:9:8"
+              }
+            ],
+            "name": "setFactory",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1307,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1306,
+                  "name": "_factory",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1320,
+                  "src": "622:16:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1305,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "622:7:8",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "621:18:8"
+            },
+            "returnParameters": {
+              "id": 1312,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1311,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1320,
+                  "src": "668:4:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1310,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "668:4:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "667:6:8"
+            },
+            "scope": 1372,
+            "src": "602:134:8",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 1370,
+              "nodeType": "Block",
+              "src": "923:394:8",
+              "statements": [
+                {
+                  "assignments": [
+                    1334
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1334,
+                      "name": "assetFactory",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1370,
+                      "src": "933:36:8",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IJustSwapProxyInterface_$1292",
+                        "typeString": "contract IJustSwapProxyInterface"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 1333,
+                        "name": "IJustSwapProxyInterface",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 1292,
+                        "src": "933:23:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IJustSwapProxyInterface_$1292",
+                          "typeString": "contract IJustSwapProxyInterface"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1341,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 1338,
+                            "name": "_asset",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1322,
+                            "src": "1016:6:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1336,
+                            "name": "factory",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1304,
+                            "src": "996:7:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_IJustSwapFactoryInterface_$1300",
+                              "typeString": "contract IJustSwapFactoryInterface"
+                            }
+                          },
+                          "id": 1337,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "getExchange",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1299,
+                          "src": "996:19:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_address_payable_$",
+                            "typeString": "function (address) view external returns (address payable)"
+                          }
+                        },
+                        "id": 1339,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "996:27:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      ],
+                      "id": 1335,
+                      "name": "IJustSwapProxyInterface",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1292,
+                      "src": "972:23:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_IJustSwapProxyInterface_$1292_$",
+                        "typeString": "type(contract IJustSwapProxyInterface)"
+                      }
+                    },
+                    "id": 1340,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "972:52:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IJustSwapProxyInterface_$1292",
+                      "typeString": "contract IJustSwapProxyInterface"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "933:91:8"
+                },
+                {
+                  "assignments": [
+                    1343
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1343,
+                      "name": "trxcount",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1370,
+                      "src": "1034:16:8",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 1342,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1034:7:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1350,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1346,
+                        "name": "_amount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1324,
+                        "src": "1086:7:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "31",
+                        "id": 1347,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1095:1:8",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "3130",
+                        "id": 1348,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1098:2:8",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_10_by_1",
+                          "typeString": "int_const 10"
+                        },
+                        "value": "10"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        {
+                          "typeIdentifier": "t_rational_10_by_1",
+                          "typeString": "int_const 10"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1344,
+                        "name": "assetFactory",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1334,
+                        "src": "1053:12:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IJustSwapProxyInterface_$1292",
+                          "typeString": "contract IJustSwapProxyInterface"
+                        }
+                      },
+                      "id": 1345,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "tokenToTrxSwapInput",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1280,
+                      "src": "1053:32:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
+                        "typeString": "function (uint256,uint256,uint256) external returns (uint256)"
+                      }
+                    },
+                    "id": 1349,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1053:48:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1034:67:8"
+                },
+                {
+                  "assignments": [
+                    1352
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1352,
+                      "name": "tokenToBurnFactory",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1370,
+                      "src": "1111:42:8",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IJustSwapProxyInterface_$1292",
+                        "typeString": "contract IJustSwapProxyInterface"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 1351,
+                        "name": "IJustSwapProxyInterface",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 1292,
+                        "src": "1111:23:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IJustSwapProxyInterface_$1292",
+                          "typeString": "contract IJustSwapProxyInterface"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1359,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 1356,
+                            "name": "_tokenToBurn",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1326,
+                            "src": "1200:12:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1354,
+                            "name": "factory",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1304,
+                            "src": "1180:7:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_IJustSwapFactoryInterface_$1300",
+                              "typeString": "contract IJustSwapFactoryInterface"
+                            }
+                          },
+                          "id": 1355,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "getExchange",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1299,
+                          "src": "1180:19:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_address_payable_$",
+                            "typeString": "function (address) view external returns (address payable)"
+                          }
+                        },
+                        "id": 1357,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1180:33:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      ],
+                      "id": 1353,
+                      "name": "IJustSwapProxyInterface",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1292,
+                      "src": "1156:23:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_IJustSwapProxyInterface_$1292_$",
+                        "typeString": "type(contract IJustSwapProxyInterface)"
+                      }
+                    },
+                    "id": 1358,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1156:58:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IJustSwapProxyInterface_$1292",
+                      "typeString": "contract IJustSwapProxyInterface"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1111:103:8"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "31",
+                        "id": 1365,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1290:1:8",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "3130",
+                        "id": 1366,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1293:2:8",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_10_by_1",
+                          "typeString": "int_const 10"
+                        },
+                        "value": "10"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 1367,
+                        "name": "_destAddress",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1328,
+                        "src": "1297:12:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        {
+                          "typeIdentifier": "t_rational_10_by_1",
+                          "typeString": "int_const 10"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 1363,
+                          "name": "trxcount",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1343,
+                          "src": "1280:8:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1360,
+                            "name": "tokenToBurnFactory",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1352,
+                            "src": "1231:18:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_IJustSwapProxyInterface_$1292",
+                              "typeString": "contract IJustSwapProxyInterface"
+                            }
+                          },
+                          "id": 1361,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "trxToTokenTransferInput",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1291,
+                          "src": "1231:42:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_external_payable$_t_uint256_$_t_uint256_$_t_address_$returns$_t_uint256_$",
+                            "typeString": "function (uint256,uint256,address) payable external returns (uint256)"
+                          }
+                        },
+                        "id": 1362,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "value",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "1231:48:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_setvalue_nonpayable$_t_uint256_$returns$_t_function_external_payable$_t_uint256_$_t_uint256_$_t_address_$returns$_t_uint256_$value_$",
+                          "typeString": "function (uint256) returns (function (uint256,uint256,address) payable external returns (uint256))"
+                        }
+                      },
+                      "id": 1364,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1231:58:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_payable$_t_uint256_$_t_uint256_$_t_address_$returns$_t_uint256_$value",
+                        "typeString": "function (uint256,uint256,address) payable external returns (uint256)"
+                      }
+                    },
+                    "id": 1368,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1231:79:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 1332,
+                  "id": 1369,
+                  "nodeType": "Return",
+                  "src": "1224:86:8"
+                }
+              ]
+            },
+            "documentation": "*********\n@dev returns the DBT",
+            "id": 1371,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "tradeWithHint",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1329,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1322,
+                  "name": "_asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1371,
+                  "src": "815:14:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1321,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "815:7:8",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1324,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1371,
+                  "src": "831:12:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1323,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "831:4:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1326,
+                  "name": "_tokenToBurn",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1371,
+                  "src": "845:20:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1325,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "845:7:8",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1328,
+                  "name": "_destAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1371,
+                  "src": "867:20:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1327,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "867:7:8",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "814:74:8"
+            },
+            "returnParameters": {
+              "id": 1332,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1331,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1371,
+                  "src": "914:7:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1330,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "914:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "913:9:8"
+            },
+            "scope": 1372,
+            "src": "792:525:8",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1373,
+        "src": "510:809:8"
+      }
+    ],
+    "src": "0:1320:8"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/bibodeng/Programming/water_loan_core/contracts/interfaces/IJustSwapInterface.sol",
+    "exportedSymbols": {
+      "IJustSwapFactoryInterface": [
+        1300
+      ],
+      "IJustSwapInterface": [
+        1372
+      ],
+      "IJustSwapProxyInterface": [
+        1292
+      ]
+    },
+    "id": 1373,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1268,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:8"
+      },
+      {
+        "absolutePath": "/Users/bibodeng/Programming/water_loan_core/contracts/libraries/openzeppelin-solidity/contracts/ownership/Ownable.sol",
+        "file": "../libraries/openzeppelin-solidity/contracts/ownership/Ownable.sol",
+        "id": 1269,
+        "nodeType": "ImportDirective",
+        "scope": 1373,
+        "sourceUnit": 15373,
+        "src": "25:76:8",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 1292,
+        "linearizedBaseContracts": [
+          1292
+        ],
+        "name": "IJustSwapProxyInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 1280,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "tokenToTrxSwapInput",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1276,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1271,
+                  "name": "tokens_sold",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1280,
+                  "src": "172:19:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1270,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "172:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1273,
+                  "name": "min_trx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1280,
+                  "src": "193:15:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1272,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "193:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1275,
+                  "name": "deadline",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1280,
+                  "src": "210:16:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1274,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "210:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "171:56:8"
+            },
+            "returnParameters": {
+              "id": 1279,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1278,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1280,
+                  "src": "246:7:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1277,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "246:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "245:9:8"
+            },
+            "scope": 1292,
+            "src": "143:112:8",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 1291,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "trxToTokenTransferInput",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1287,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1282,
+                  "name": "min_tokens",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1291,
+                  "src": "293:18:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1281,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "293:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1284,
+                  "name": "deadline",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1291,
+                  "src": "313:16:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1283,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "313:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1286,
+                  "name": "recipient",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1291,
+                  "src": "331:17:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1285,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "331:7:8",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "292:57:8"
+            },
+            "returnParameters": {
+              "id": 1290,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1289,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1291,
+                  "src": "375:7:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1288,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "375:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "374:9:8"
+            },
+            "scope": 1292,
+            "src": "260:124:8",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1373,
+        "src": "103:283:8"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 1300,
+        "linearizedBaseContracts": [
+          1300
+        ],
+        "name": "IJustSwapFactoryInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 1299,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getExchange",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1295,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1294,
+                  "name": "token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1299,
+                  "src": "451:13:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1293,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "451:7:8",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "450:15:8"
+            },
+            "returnParameters": {
+              "id": 1298,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1297,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1299,
+                  "src": "489:15:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  },
+                  "typeName": {
+                    "id": 1296,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "489:15:8",
+                    "stateMutability": "payable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "488:17:8"
+            },
+            "scope": 1300,
+            "src": "430:76:8",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1373,
+        "src": "388:120:8"
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 1301,
+              "name": "Ownable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 15372,
+              "src": "541:7:8",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Ownable_$15372",
+                "typeString": "contract Ownable"
+              }
+            },
+            "id": 1302,
+            "nodeType": "InheritanceSpecifier",
+            "src": "541:7:8"
+          }
+        ],
+        "contractDependencies": [
+          10117,
+          15372
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1372,
+        "linearizedBaseContracts": [
+          1372,
+          15372,
+          10117
+        ],
+        "name": "IJustSwapInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 1304,
+            "name": "factory",
+            "nodeType": "VariableDeclaration",
+            "scope": 1372,
+            "src": "555:40:8",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IJustSwapFactoryInterface_$1300",
+              "typeString": "contract IJustSwapFactoryInterface"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 1303,
+              "name": "IJustSwapFactoryInterface",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1300,
+              "src": "555:25:8",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IJustSwapFactoryInterface_$1300",
+                "typeString": "contract IJustSwapFactoryInterface"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1319,
+              "nodeType": "Block",
+              "src": "674:62:8",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1317,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 1313,
+                      "name": "factory",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1304,
+                      "src": "684:7:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IJustSwapFactoryInterface_$1300",
+                        "typeString": "contract IJustSwapFactoryInterface"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 1315,
+                          "name": "_factory",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1306,
+                          "src": "720:8:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 1314,
+                        "name": "IJustSwapFactoryInterface",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1300,
+                        "src": "694:25:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_IJustSwapFactoryInterface_$1300_$",
+                          "typeString": "type(contract IJustSwapFactoryInterface)"
+                        }
+                      },
+                      "id": 1316,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "694:35:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IJustSwapFactoryInterface_$1300",
+                        "typeString": "contract IJustSwapFactoryInterface"
+                      }
+                    },
+                    "src": "684:45:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IJustSwapFactoryInterface_$1300",
+                      "typeString": "contract IJustSwapFactoryInterface"
+                    }
+                  },
+                  "id": 1318,
+                  "nodeType": "ExpressionStatement",
+                  "src": "684:45:8"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1320,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 1309,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 1308,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 15305,
+                  "src": "649:9:8",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "649:9:8"
+              }
+            ],
+            "name": "setFactory",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1307,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1306,
+                  "name": "_factory",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1320,
+                  "src": "622:16:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1305,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "622:7:8",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "621:18:8"
+            },
+            "returnParameters": {
+              "id": 1312,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1311,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1320,
+                  "src": "668:4:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1310,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "668:4:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "667:6:8"
+            },
+            "scope": 1372,
+            "src": "602:134:8",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 1370,
+              "nodeType": "Block",
+              "src": "923:394:8",
+              "statements": [
+                {
+                  "assignments": [
+                    1334
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1334,
+                      "name": "assetFactory",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1370,
+                      "src": "933:36:8",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IJustSwapProxyInterface_$1292",
+                        "typeString": "contract IJustSwapProxyInterface"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 1333,
+                        "name": "IJustSwapProxyInterface",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 1292,
+                        "src": "933:23:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IJustSwapProxyInterface_$1292",
+                          "typeString": "contract IJustSwapProxyInterface"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1341,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 1338,
+                            "name": "_asset",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1322,
+                            "src": "1016:6:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1336,
+                            "name": "factory",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1304,
+                            "src": "996:7:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_IJustSwapFactoryInterface_$1300",
+                              "typeString": "contract IJustSwapFactoryInterface"
+                            }
+                          },
+                          "id": 1337,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "getExchange",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1299,
+                          "src": "996:19:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_address_payable_$",
+                            "typeString": "function (address) view external returns (address payable)"
+                          }
+                        },
+                        "id": 1339,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "996:27:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      ],
+                      "id": 1335,
+                      "name": "IJustSwapProxyInterface",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1292,
+                      "src": "972:23:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_IJustSwapProxyInterface_$1292_$",
+                        "typeString": "type(contract IJustSwapProxyInterface)"
+                      }
+                    },
+                    "id": 1340,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "972:52:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IJustSwapProxyInterface_$1292",
+                      "typeString": "contract IJustSwapProxyInterface"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "933:91:8"
+                },
+                {
+                  "assignments": [
+                    1343
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1343,
+                      "name": "trxcount",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1370,
+                      "src": "1034:16:8",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 1342,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1034:7:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1350,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1346,
+                        "name": "_amount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1324,
+                        "src": "1086:7:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "31",
+                        "id": 1347,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1095:1:8",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "3130",
+                        "id": 1348,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1098:2:8",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_10_by_1",
+                          "typeString": "int_const 10"
+                        },
+                        "value": "10"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        {
+                          "typeIdentifier": "t_rational_10_by_1",
+                          "typeString": "int_const 10"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1344,
+                        "name": "assetFactory",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1334,
+                        "src": "1053:12:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IJustSwapProxyInterface_$1292",
+                          "typeString": "contract IJustSwapProxyInterface"
+                        }
+                      },
+                      "id": 1345,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "tokenToTrxSwapInput",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1280,
+                      "src": "1053:32:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
+                        "typeString": "function (uint256,uint256,uint256) external returns (uint256)"
+                      }
+                    },
+                    "id": 1349,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1053:48:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1034:67:8"
+                },
+                {
+                  "assignments": [
+                    1352
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1352,
+                      "name": "tokenToBurnFactory",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1370,
+                      "src": "1111:42:8",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IJustSwapProxyInterface_$1292",
+                        "typeString": "contract IJustSwapProxyInterface"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 1351,
+                        "name": "IJustSwapProxyInterface",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 1292,
+                        "src": "1111:23:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IJustSwapProxyInterface_$1292",
+                          "typeString": "contract IJustSwapProxyInterface"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1359,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 1356,
+                            "name": "_tokenToBurn",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1326,
+                            "src": "1200:12:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1354,
+                            "name": "factory",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1304,
+                            "src": "1180:7:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_IJustSwapFactoryInterface_$1300",
+                              "typeString": "contract IJustSwapFactoryInterface"
+                            }
+                          },
+                          "id": 1355,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "getExchange",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1299,
+                          "src": "1180:19:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_address_payable_$",
+                            "typeString": "function (address) view external returns (address payable)"
+                          }
+                        },
+                        "id": 1357,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1180:33:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      ],
+                      "id": 1353,
+                      "name": "IJustSwapProxyInterface",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1292,
+                      "src": "1156:23:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_IJustSwapProxyInterface_$1292_$",
+                        "typeString": "type(contract IJustSwapProxyInterface)"
+                      }
+                    },
+                    "id": 1358,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1156:58:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IJustSwapProxyInterface_$1292",
+                      "typeString": "contract IJustSwapProxyInterface"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1111:103:8"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "31",
+                        "id": 1365,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1290:1:8",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "3130",
+                        "id": 1366,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1293:2:8",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_10_by_1",
+                          "typeString": "int_const 10"
+                        },
+                        "value": "10"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 1367,
+                        "name": "_destAddress",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1328,
+                        "src": "1297:12:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        {
+                          "typeIdentifier": "t_rational_10_by_1",
+                          "typeString": "int_const 10"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 1363,
+                          "name": "trxcount",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1343,
+                          "src": "1280:8:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1360,
+                            "name": "tokenToBurnFactory",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1352,
+                            "src": "1231:18:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_IJustSwapProxyInterface_$1292",
+                              "typeString": "contract IJustSwapProxyInterface"
+                            }
+                          },
+                          "id": 1361,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "trxToTokenTransferInput",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1291,
+                          "src": "1231:42:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_external_payable$_t_uint256_$_t_uint256_$_t_address_$returns$_t_uint256_$",
+                            "typeString": "function (uint256,uint256,address) payable external returns (uint256)"
+                          }
+                        },
+                        "id": 1362,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "value",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "1231:48:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_setvalue_nonpayable$_t_uint256_$returns$_t_function_external_payable$_t_uint256_$_t_uint256_$_t_address_$returns$_t_uint256_$value_$",
+                          "typeString": "function (uint256) returns (function (uint256,uint256,address) payable external returns (uint256))"
+                        }
+                      },
+                      "id": 1364,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1231:58:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_payable$_t_uint256_$_t_uint256_$_t_address_$returns$_t_uint256_$value",
+                        "typeString": "function (uint256,uint256,address) payable external returns (uint256)"
+                      }
+                    },
+                    "id": 1368,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1231:79:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 1332,
+                  "id": 1369,
+                  "nodeType": "Return",
+                  "src": "1224:86:8"
+                }
+              ]
+            },
+            "documentation": "*********\n@dev returns the DBT",
+            "id": 1371,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "tradeWithHint",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1329,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1322,
+                  "name": "_asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1371,
+                  "src": "815:14:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1321,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "815:7:8",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1324,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1371,
+                  "src": "831:12:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1323,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "831:4:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1326,
+                  "name": "_tokenToBurn",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1371,
+                  "src": "845:20:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1325,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "845:7:8",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1328,
+                  "name": "_destAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1371,
+                  "src": "867:20:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1327,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "867:7:8",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "814:74:8"
+            },
+            "returnParameters": {
+              "id": 1332,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1331,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1371,
+                  "src": "914:7:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1330,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "914:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "913:9:8"
+            },
+            "scope": 1372,
+            "src": "792:525:8",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1373,
+        "src": "510:809:8"
+      }
+    ],
+    "src": "0:1320:8"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.4+commit.d15a3125.mod.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2020-11-19T10:56:46.547Z"
+}

@@ -1,0 +1,1053 @@
+{
+  "contractName": "GenericOracleI",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "_asset",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "_price",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "AssetPriceUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "_price",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "TrxPriceUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "_sybil",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "_asset",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "_sybilProphecy",
+          "type": "uint96"
+        },
+        {
+          "indexed": false,
+          "name": "_oracleProphecy",
+          "type": "uint96"
+        }
+      ],
+      "name": "ProphecySubmitted",
+      "type": "event"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_asset",
+          "type": "address"
+        }
+      ],
+      "name": "getAssetPrice",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getTrxUsdPrice",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.0;\n\ninterface GenericOracleI {\n    // ganache\n    event AssetPriceUpdated(address _asset, uint256 _price, uint256 timestamp);\n    event TrxPriceUpdated(uint256 _price, uint256 timestamp);\n\n    // kovan\n    event ProphecySubmitted(\n        address indexed _sybil,\n        address indexed _asset,\n        uint96 _sybilProphecy,\n        uint96 _oracleProphecy\n    );\n\n    function getAssetPrice(address _asset) external view returns(uint256);\n    function getTrxUsdPrice() external view returns(uint256);\n}\n\n",
+  "sourcePath": "/Users/bibodeng/Programming/water_loan_core/contracts/mocks/oracle/GenericOracleI.sol",
+  "ast": {
+    "absolutePath": "/Users/bibodeng/Programming/water_loan_core/contracts/mocks/oracle/GenericOracleI.sol",
+    "exportedSymbols": {
+      "GenericOracleI": [
+        21123
+      ]
+    },
+    "id": 21124,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 21086,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:130"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 21123,
+        "linearizedBaseContracts": [
+          21123
+        ],
+        "name": "GenericOracleI",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 21094,
+            "name": "AssetPriceUpdated",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 21093,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21088,
+                  "indexed": false,
+                  "name": "_asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21094,
+                  "src": "95:14:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 21087,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "95:7:130",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 21090,
+                  "indexed": false,
+                  "name": "_price",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21094,
+                  "src": "111:14:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 21089,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "111:7:130",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 21092,
+                  "indexed": false,
+                  "name": "timestamp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21094,
+                  "src": "127:17:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 21091,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "127:7:130",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "94:51:130"
+            },
+            "src": "71:75:130"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 21100,
+            "name": "TrxPriceUpdated",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 21099,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21096,
+                  "indexed": false,
+                  "name": "_price",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21100,
+                  "src": "173:14:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 21095,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "173:7:130",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 21098,
+                  "indexed": false,
+                  "name": "timestamp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21100,
+                  "src": "189:17:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 21097,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "189:7:130",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "172:35:130"
+            },
+            "src": "151:57:130"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 21110,
+            "name": "ProphecySubmitted",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 21109,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21102,
+                  "indexed": true,
+                  "name": "_sybil",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21110,
+                  "src": "260:22:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 21101,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "260:7:130",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 21104,
+                  "indexed": true,
+                  "name": "_asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21110,
+                  "src": "292:22:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 21103,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "292:7:130",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 21106,
+                  "indexed": false,
+                  "name": "_sybilProphecy",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21110,
+                  "src": "324:21:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint96",
+                    "typeString": "uint96"
+                  },
+                  "typeName": {
+                    "id": 21105,
+                    "name": "uint96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "324:6:130",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint96",
+                      "typeString": "uint96"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 21108,
+                  "indexed": false,
+                  "name": "_oracleProphecy",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21110,
+                  "src": "355:22:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint96",
+                    "typeString": "uint96"
+                  },
+                  "typeName": {
+                    "id": 21107,
+                    "name": "uint96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "355:6:130",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint96",
+                      "typeString": "uint96"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "250:133:130"
+            },
+            "src": "227:157:130"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 21117,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAssetPrice",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 21113,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21112,
+                  "name": "_asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21117,
+                  "src": "413:14:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 21111,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "413:7:130",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "412:16:130"
+            },
+            "returnParameters": {
+              "id": 21116,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21115,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21117,
+                  "src": "451:7:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 21114,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "451:7:130",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "450:9:130"
+            },
+            "scope": 21123,
+            "src": "390:70:130",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 21122,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getTrxUsdPrice",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 21118,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "488:2:130"
+            },
+            "returnParameters": {
+              "id": 21121,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21120,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21122,
+                  "src": "513:7:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 21119,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "513:7:130",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "512:9:130"
+            },
+            "scope": 21123,
+            "src": "465:57:130",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 21124,
+        "src": "25:499:130"
+      }
+    ],
+    "src": "0:526:130"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/bibodeng/Programming/water_loan_core/contracts/mocks/oracle/GenericOracleI.sol",
+    "exportedSymbols": {
+      "GenericOracleI": [
+        21123
+      ]
+    },
+    "id": 21124,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 21086,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:130"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 21123,
+        "linearizedBaseContracts": [
+          21123
+        ],
+        "name": "GenericOracleI",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 21094,
+            "name": "AssetPriceUpdated",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 21093,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21088,
+                  "indexed": false,
+                  "name": "_asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21094,
+                  "src": "95:14:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 21087,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "95:7:130",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 21090,
+                  "indexed": false,
+                  "name": "_price",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21094,
+                  "src": "111:14:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 21089,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "111:7:130",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 21092,
+                  "indexed": false,
+                  "name": "timestamp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21094,
+                  "src": "127:17:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 21091,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "127:7:130",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "94:51:130"
+            },
+            "src": "71:75:130"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 21100,
+            "name": "TrxPriceUpdated",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 21099,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21096,
+                  "indexed": false,
+                  "name": "_price",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21100,
+                  "src": "173:14:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 21095,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "173:7:130",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 21098,
+                  "indexed": false,
+                  "name": "timestamp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21100,
+                  "src": "189:17:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 21097,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "189:7:130",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "172:35:130"
+            },
+            "src": "151:57:130"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 21110,
+            "name": "ProphecySubmitted",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 21109,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21102,
+                  "indexed": true,
+                  "name": "_sybil",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21110,
+                  "src": "260:22:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 21101,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "260:7:130",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 21104,
+                  "indexed": true,
+                  "name": "_asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21110,
+                  "src": "292:22:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 21103,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "292:7:130",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 21106,
+                  "indexed": false,
+                  "name": "_sybilProphecy",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21110,
+                  "src": "324:21:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint96",
+                    "typeString": "uint96"
+                  },
+                  "typeName": {
+                    "id": 21105,
+                    "name": "uint96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "324:6:130",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint96",
+                      "typeString": "uint96"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 21108,
+                  "indexed": false,
+                  "name": "_oracleProphecy",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21110,
+                  "src": "355:22:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint96",
+                    "typeString": "uint96"
+                  },
+                  "typeName": {
+                    "id": 21107,
+                    "name": "uint96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "355:6:130",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint96",
+                      "typeString": "uint96"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "250:133:130"
+            },
+            "src": "227:157:130"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 21117,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAssetPrice",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 21113,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21112,
+                  "name": "_asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21117,
+                  "src": "413:14:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 21111,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "413:7:130",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "412:16:130"
+            },
+            "returnParameters": {
+              "id": 21116,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21115,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21117,
+                  "src": "451:7:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 21114,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "451:7:130",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "450:9:130"
+            },
+            "scope": 21123,
+            "src": "390:70:130",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 21122,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getTrxUsdPrice",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 21118,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "488:2:130"
+            },
+            "returnParameters": {
+              "id": 21121,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21120,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21122,
+                  "src": "513:7:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 21119,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "513:7:130",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "512:9:130"
+            },
+            "scope": 21123,
+            "src": "465:57:130",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 21124,
+        "src": "25:499:130"
+      }
+    ],
+    "src": "0:526:130"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.4+commit.d15a3125.mod.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2020-11-19T10:56:46.908Z"
+}
