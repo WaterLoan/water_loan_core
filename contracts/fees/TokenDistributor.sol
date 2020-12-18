@@ -5,8 +5,7 @@ import "../libraries/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
 import "../libraries/openzeppelin-solidity/contracts/token/ERC20/SafeERC20.sol";
 import "../libraries/openzeppelin-solidity/contracts/token/ERC20/ERC20Burnable.sol";
 
-import "../libraries/openzeppelin-upgradeability/VersionedInitializable.sol";
-import "../interfaces/IJustSwapInterface.sol";
+import "../libraries/openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "../libraries/TrxAddressLib.sol";
 
 
@@ -20,7 +19,7 @@ import "../libraries/TrxAddressLib.sol";
 ///    the accumulated token amounts and/or TRX in this contract to all the receivers with percentages
 ///  - If the address(0) is used as receiver, this contract will trade in JustSwap to tokenToBurn
 ///    and burn it (sending to address(0) the tokenToBurn)
-contract TokenDistributor is VersionedInitializable {
+contract TokenDistributor is Ownable {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
@@ -31,20 +30,8 @@ contract TokenDistributor is VersionedInitializable {
 
     event DistributionUpdated(address[] receivers, uint256[] percentages);
     event Distributed(address receiver, uint256 percentage, uint256 amount);
-    event Setup(address tokenToBurn, address swapProxy, address _recipientBurn);
-    event Trade(address indexed from, uint256 fromAmount, uint256 toAmount);
-    event Burn(uint256 amount);
 
     uint256 public constant IMPLEMENTATION_REVISION = 0x1;
-
-    uint256 public constant MAX_UINT = 2**256 - 1;
-
-    uint256 public constant MAX_UINT_MINUS_ONE = (2**256 - 1) - 1;
-
-    /// @notice A value of 1 will execute the trade according to market price in the time of the transaction confirmation
-    uint256 public constant MIN_CONVERSION_RATE = 1;
-
-    address public constant SWAP_TRX_MOCK_ADDRESS = address(0x00eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee);
 
     /// @notice Defines how tokens and TRX are distributed on each call to .distribute()
     Distribution private distribution;
@@ -52,32 +39,12 @@ contract TokenDistributor is VersionedInitializable {
     /// @notice Instead of using 100 for percentages, higher base to have more precision in the distribution
     uint256 public constant DISTRIBUTION_BASE = 10000;
 
-    /// @notice Swap Proxy contract to trade tokens/TRX to tokenToBurn
-    IJustSwapInterface public swapProxy;
-
-    /// @notice The address of the token to burn (LEND token)
-    address public tokenToBurn;
-
-    /// @notice Address to send tokens to "burn".
-    /// Because of limitations on OZ ERC20, on dev it's needed to use the 0x00000...1 address instead of address(0)
-    /// So this param needs to be received on construction
-    address public recipientBurn;
-
     /// @notice Called by the proxy when setting this contract as implementation
-    function initialize(
-        address _recipientBurn,
-        address _tokenToBurn,
-        address _swapProxy,
+    function setTokenDistribution(
         address[] memory _receivers,
-        uint256[] memory _percentages,
-        IERC20[] memory _tokens
-    ) public initializer {
-        recipientBurn = _recipientBurn;
-        tokenToBurn = _tokenToBurn;
-        swapProxy = IJustSwapInterface(_swapProxy);
+        uint256[] memory _percentages
+    ) public onlyOwner {
         internalSetTokenDistribution(_receivers, _percentages);
-        approveSwap(_tokens);
-        emit Setup(_tokenToBurn, _swapProxy, _recipientBurn);
     }
 
     /// @notice In order to receive TRX transfers
@@ -106,24 +73,7 @@ contract TokenDistributor is VersionedInitializable {
                         require(_success, "Reverted TRX transfer");
                     }
                     emit Distributed(_distribution.receivers[j], _distribution.percentages[j], _amount);
-                } else {
-                    uint256 _amountToBurn = _amount;
-                    // If the token to burn is already tokenToBurn, we don't trade, burning directly
-                    if (_tokenAddress != tokenToBurn) {
-                        _amountToBurn = internalTrade(_tokenAddress, _amount);
-                    }
-                    internalBurn(_amountToBurn);
                 }
-            }
-        }
-    }
-
-    /// @notice "Infinite" approval for all the tokens initialized
-    /// @param _tokens List of IERC20 to approve
-    function approveSwap(IERC20[] memory _tokens) public {
-        for (uint256 i = 0; i < _tokens.length; i++) {
-            if (address(_tokens[i]) != TrxAddressLib.trxAddress()) {
-                _tokens[i].safeApprove(address(swapProxy), MAX_UINT_MINUS_ONE);
             }
         }
     }
@@ -151,37 +101,20 @@ contract TokenDistributor is VersionedInitializable {
         distribution = Distribution({receivers: _receivers, percentages: _percentages});
         emit DistributionUpdated(_receivers, _percentages);
     }
-
-    /// @notice Internal trade function
-    /// @param _from The token to trade from
-    /// @param _amount The amount to trade
-    function internalTrade(address _from, uint256 _amount) internal returns(uint256) {
-        address _swapFromRef = (_from == TrxAddressLib.trxAddress())
-            ? SWAP_TRX_MOCK_ADDRESS
-            : _from;
-        uint256 _value = (_from == TrxAddressLib.trxAddress())
-            ? _amount
-            : 0;
-
-        uint256 _amountReceived = swapProxy.tradeWithHint.value(_value)(
-            // _from token (or TRX mock address)
-            _swapFromRef,
-            // amount of the _from token to trade
-            _amount,
-            // _to token (or TRX mock address)
-            tokenToBurn,
-            // address which will receive the _to token amount traded
-            address(this)
-        );
-        emit Trade(_swapFromRef, _amount, _amountReceived);
-        return _amountReceived;
-    }
-
-    /// @notice Internal function to send _amount of tokenToBurn to the 0x0 address
-    /// @param _amount The amount to burn
-    function internalBurn(uint256 _amount) internal {
-        require(IERC20(tokenToBurn).transfer(recipientBurn, _amount), "INTERNAL_BURN. Reverted transfer to recipientBurn address");
-        emit Burn(_amount);
+    
+    /// This method is called if the contract needs to be changed
+    function exitAsset(address _tokenAddress) public onlyOwner {
+        uint256 _balanceToDistribute = (_tokenAddress != TrxAddressLib.trxAddress())
+            ? IERC20(_tokenAddress).balanceOf(address(this))
+            : address(this).balance;
+        if (_balanceToDistribute > 0) {
+            if (_tokenAddress != TrxAddressLib.trxAddress()) {
+                IERC20(_tokenAddress).transfer(owner(), _balanceToDistribute);
+            } else {
+                (bool _success,) = owner().call.value(_balanceToDistribute)("");
+                require(_success, "Reverted TRX transfer");
+            }
+        }
     }
 
 }

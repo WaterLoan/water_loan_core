@@ -36,7 +36,7 @@ Then, run the migration with:
     development: {
       // For trontools/quickstart docker image
       privateKey: process.env.PRIVATE_KEY_DEVELOPMENT,
-      userFeePercentage: 30,
+      userFeePercentage: 0,
       feeLimit: 1e9,
       fullHost: 'http://127.0.0.1:' + port,
       network_id: '9'
